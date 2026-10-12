@@ -214,6 +214,9 @@ public partial class MainWindowViewModel
         {
             _markerService.DeleteAll();
             ReloadMarkers();
+            _n = 0;
+            ClearDbButtonText = "Маркеры удалены!";
+            await Task.Delay(3000);
             ClearDbButtonText = "Очистить маркеры";
         }
         else
@@ -229,7 +232,7 @@ public partial class MainWindowViewModel
                 ClearDbButtonText = "Подтвердить 0";
                 await Task.Delay(1000, token);
                 ClearDbButtonText = "Очистить маркеры";
-                n = 0;
+                _n = 0;
             }
         }
     }

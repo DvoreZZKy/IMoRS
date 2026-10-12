@@ -39,6 +39,7 @@ public partial class MainWindowViewModel
             DescOpacity = 0;
             await Task.Delay(175);
             IsPanel1Open = false;
+            IsEditing = false;
         }
 
         ClosePanel2();
