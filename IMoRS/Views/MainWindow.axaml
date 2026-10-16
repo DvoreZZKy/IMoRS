@@ -10,9 +10,7 @@
         CanResize="False"
         WindowState="FullScreen"
         Focusable="True"
-        WindowDecorations="None"
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaTitleBarHeightHint="50">
+        WindowDecorations="None">
 
     <!-- Анимации перехода для окна -->
     <Window.Transitions>
@@ -373,13 +371,23 @@
                                     Width="50"
                                     Height="50"
                                     Padding="0">
-                                <Border Classes="Tile"
-                                        Background="#F809030E"
-                                        Padding="1">
-                                    <Image Source="/Assets/plus.png"
-                                           Stretch="Uniform"
-                                           Classes="ButtonImage" />
-                                </Border>
+                                <Grid>
+                                    <Border Classes="Tile"
+                                            Background="#F809030E"
+                                            Padding="1">
+                                        <Image Source="/Assets/plus.png"
+                                               Stretch="Uniform"
+                                               Classes="ButtonImage" />
+                                    </Border>
+                                    <Border Classes="Tile"
+                                            Background="White"
+                                            IsVisible="{Binding IsAddingMarker}"
+                                            Padding="1">
+                                        <Image Source="/Assets/plusBlack.png"
+                                               Stretch="Uniform"
+                                               Classes="ButtonImage" />
+                                    </Border>
+                                </Grid>
                             </Button>
                         </StackPanel>
 
@@ -759,7 +767,8 @@
                                                            FontSize="22" />
 
                                                 <Grid ColumnDefinitions="* * 2* *">
-                                                    <Button Grid.Column="0" Classes="ControlButton GradientButton SideButton"
+                                                    <Button Grid.Column="0"
+                                                            Classes="ControlButton GradientButton SideButton"
                                                             HorizontalAlignment="Stretch"
                                                             Margin="0, 0, 10, 0"
                                                             Command="{Binding ExportDatabaseCommand}">
@@ -770,8 +779,9 @@
                                                                        FontSize="22" />
                                                         </StackPanel>
                                                     </Button>
-                                                    
-                                                    <Button Grid.Column="1" Classes="ControlButton GradientButton SideButton"
+
+                                                    <Button Grid.Column="1"
+                                                            Classes="ControlButton GradientButton SideButton"
                                                             HorizontalAlignment="Stretch"
                                                             Margin="10, 0, 0, 0"
                                                             Command="{Binding ImportDatabaseCommand}">
@@ -782,8 +792,9 @@
                                                                        FontSize="22" />
                                                         </StackPanel>
                                                     </Button>
-                                                    
-                                                    <Button Grid.Column="3" Classes="ControlButton GradientButton SideButton"
+
+                                                    <Button Grid.Column="3"
+                                                            Classes="ControlButton GradientButton SideButton"
                                                             HorizontalAlignment="Stretch"
                                                             Margin="0, 0, 10, 0"
                                                             Command="{Binding ApplyClearDatabaseCommand}">

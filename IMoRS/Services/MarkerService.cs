@@ -1,14 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using IMoRS.Data;
 using IMoRS.Data.Entities;
 using IMoRS.DTOs;
-using Mapsui.Layers;
-using Mapsui.Projections;
-using Mapsui.Styles;
 using Microsoft.Data.Sqlite;
 
 namespace IMoRS.Services;
