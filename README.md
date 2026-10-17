@@ -4,9 +4,9 @@
 Позволяет добавлять точки на карту, выбирать для них иконки, задавать
 описание и размер, а также хранить все данные локально.
 
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/067c76be-103c-4bca-a44f-2f1ee0aded83" /> <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/03aa7384-7ea5-40ca-828e-12a678ef6285" /> <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/ff7d65bb-8e99-434b-834d-3c43e8f87444" />
-
-
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/00693620-8acf-4d97-9421-422e07c74983" />
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/d7ac5ae9-6a0f-480d-a2ad-50ea790c87ca" />
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/3100f7a2-1954-4161-a0b1-b1a4540b48fe" />
 
 ## Возможности
 
