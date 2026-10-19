@@ -1,9 +1,18 @@
 # IMoRS
 
-Десктопное приложение для работы с пользовательскими метками на карте.
-Позволяет добавлять точки на карту, выбирать для них иконки, задавать
-описание и размер, а также хранить все данные локально.
+**IMoRS** (Interactive Map Object Rendering System) — десктопное приложение для Windows
+для создания и управления пользовательскими метками на интерактивной карте.
+Добавляйте точки на карту OpenStreetMap, назначайте им иконки (встроенные или
+свои изображения), задавайте описание и размер, а все данные храните локально
+в SQLite. Поддерживается экспорт и импорт меток.
 
+Приложение написано на **C#** с использованием **Avalonia UI** и архитектуры **MVVM**,
+карта построена на **Mapsui + BruTile**, хранение — **SQLite + Entity Framework Core**.
+
+> **Ключевые слова:** карта, метки на карте, OpenStreetMap, Mapsui, Avalonia,
+> .NET, C#, desktop, SQLite, GIS, markers, map editor.
+
+# Скриншоты
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/00693620-8acf-4d97-9421-422e07c74983" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/d7ac5ae9-6a0f-480d-a2ad-50ea790c87ca" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/3100f7a2-1954-4161-a0b1-b1a4540b48fe" />
