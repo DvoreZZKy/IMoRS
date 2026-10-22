@@ -189,7 +189,7 @@ public partial class MainWindowViewModel
 
         foreach (var m in imported)
         {
-            _markerService.Add(m.X, m.Y, m.IconPath ?? "", m.Scale, m.Description);
+            _markerService.Add(m.X, m.Y, m.IconPath ?? "", m.Scale, m.Description, m.IsCustomIcon);
         }
     }
 }

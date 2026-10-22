@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IMoRS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261016140926_InitialCreate")]
+    [Migration("20261022043244_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,6 +30,9 @@ namespace IMoRS.Migrations
 
                     b.Property<string>("IconPath")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsCustomIcon")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Scale")
                         .HasColumnType("REAL");

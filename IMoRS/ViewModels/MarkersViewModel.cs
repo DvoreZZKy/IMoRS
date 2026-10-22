@@ -78,33 +78,41 @@ public partial class MainWindowViewModel
     }
 
     /// <summary>Добавляет новую метку на карту.</summary>
-    private void AddMarker(double x, double y, string iconPath)
+    private void AddMarker(double x, double y, string iconPath, bool isCustom)
     {
         try
         {
-            var physicalPath = IconStorageService.SaveIconToTemp(iconPath);
+            Console.WriteLine($"--- СОЗДАНИЕ МЕТКИ ---");
+            Console.WriteLine($"Пришел iconPath: {iconPath}");
+            Console.WriteLine($"Пришел isCustom: {isCustom}");
+            string physicalPath;
+
+            if (isCustom)
+            {
+                physicalPath = IconStorageService.ResizeAndSaveImage(iconPath); 
+            }
+            else
+            {
+                physicalPath = IconStorageService.SaveIconToTemp(iconPath);
+            }
 
             if (_markerLayer == null || Map == null)
                 return;
 
             if (!File.Exists(physicalPath))
-                throw new FileNotFoundException(
-                    $"Файл иконки не найден: {physicalPath}");
+                throw new FileNotFoundException($"Файл иконки не найден: {physicalPath}");
 
-            var (mercatorX, mercatorY) =
-                SphericalMercator.FromLonLat(x, y);
+            var (mercatorX, mercatorY) = SphericalMercator.FromLonLat(x, y);
 
             var markerDto = _markerService.Add(
                 x,
                 y,
                 physicalPath,
                 Settings.DefaultMarkerScale,
-                "");
+                "",
+                isCustom);
 
-            var feature = new PointFeature(
-                mercatorX,
-                mercatorY);
-
+            var feature = new PointFeature(mercatorX, mercatorY);
             feature["Marker"] = markerDto;
 
             feature.Styles.Add(new ImageStyle
@@ -117,7 +125,6 @@ public partial class MainWindowViewModel
 
             _markers.Add(feature);
             _markerLayer.Features = new List<IFeature>(_markers);
-
             _markerLayer.DataHasChanged();
             Map.Refresh();
         }

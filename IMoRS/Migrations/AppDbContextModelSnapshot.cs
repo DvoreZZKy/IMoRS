@@ -28,6 +28,9 @@ namespace IMoRS.Migrations
                     b.Property<string>("IconPath")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsCustomIcon")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("Scale")
                         .HasColumnType("REAL");
 

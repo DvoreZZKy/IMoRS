@@ -20,7 +20,8 @@ namespace IMoRS.Migrations
                     Y = table.Column<double>(type: "REAL", nullable: false),
                     Scale = table.Column<double>(type: "REAL", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    IconPath = table.Column<string>(type: "TEXT", nullable: true)
+                    IconPath = table.Column<string>(type: "TEXT", nullable: true),
+                    IsCustomIcon = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using IMoRS.DTOs;
 using IMoRS.Services;
@@ -87,5 +88,21 @@ public partial class MainWindowViewModel : ViewModelBase
         AppOpacity = 1;
         await System.Threading.Tasks.Task.Delay(1000);
         IsMapVisible = true;
+    }
+    
+    string userRoot    = Path.GetFullPath(Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "IMoRS", "Icons")); 
+
+    static bool IsUnder(string filePath, string rootDir)
+    {
+        if (string.IsNullOrWhiteSpace(filePath)) return false;
+
+        string fullFile = Path.GetFullPath(filePath);
+        string fullRoot = Path.GetFullPath(rootDir)
+                              .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+                          + Path.DirectorySeparatorChar;
+
+        return fullFile.StartsWith(fullRoot, StringComparison.OrdinalIgnoreCase);
     }
 }

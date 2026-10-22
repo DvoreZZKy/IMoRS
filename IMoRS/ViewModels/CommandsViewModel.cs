@@ -62,14 +62,13 @@ public partial class MainWindowViewModel
 
             _ = CloseList();
 
-            string iconPath = !string.IsNullOrEmpty(CustomMarkerImagePath)
+            bool isCustom = !string.IsNullOrEmpty(CustomMarkerImagePath);
+
+            string iconPath = isCustom
                 ? CustomMarkerImagePath!
                 : SelectedSign!.Path!;
 
-            AddMarker(
-                _pendingMarkerX.Value,
-                _pendingMarkerY.Value,
-                iconPath);
+            AddMarker(_pendingMarkerX.Value, _pendingMarkerY.Value, iconPath, isCustom);
 
             CustomMarkerImagePath = null;
             ClearPendingMarker();

@@ -15,4 +15,6 @@ public class MarkerDto
     public string? Description { get; set; }
 
     public string? IconPath { get; set; }
+
+    public bool IsCustomIcon { get; set; }
 }

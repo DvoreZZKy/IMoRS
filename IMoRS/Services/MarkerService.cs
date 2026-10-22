@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IMoRS.Data;
@@ -22,7 +23,7 @@ public class MarkerService
     /// <param name="iconPath">Путь к файлу иконки маркера</param>
     /// <param name="scale">Масштаб отображения маркера (1.0 - оригинальный размер)</param>
     /// <returns>DTO созданного маркера с присвоенным ID из базы данных</returns>
-    public MarkerDto Add(double x, double y, string iconPath, double scale, string? desc)
+    public MarkerDto Add(double x, double y, string iconPath, double scale, string? desc, bool isCutomIcon)
     {
         using var db = new AppDbContext();
 
@@ -32,10 +33,12 @@ public class MarkerService
             Y = y,
             IconPath = iconPath,
             Scale = scale,
-            Description = desc
+            Description = desc,
+            IsCustomIcon = isCutomIcon
         };
 
         db.Markers.Add(marker);
+        Console.WriteLine($"Сохранение в БД. IsCustomIcon = {marker.IsCustomIcon}");
         db.SaveChanges();
 
         return new MarkerDto
@@ -45,7 +48,8 @@ public class MarkerService
             Y = marker.Y,
             IconPath = marker.IconPath,
             Scale = marker.Scale,
-            Description = marker.Description
+            Description = marker.Description,
+            IsCustomIcon = isCutomIcon
         };
     }
 
@@ -65,7 +69,8 @@ public class MarkerService
                 Y = m.Y,
                 Description = m.Description,
                 IconPath = m.IconPath,
-                Scale = m.Scale
+                Scale = m.Scale,
+                IsCustomIcon = m.IsCustomIcon
             })
             .ToList(); 
     }
@@ -98,6 +103,7 @@ public class MarkerService
         entity.Description = dto.Description;
         entity.IconPath = dto.IconPath ?? string.Empty;
         entity.Scale = dto.Scale;
+        entity.IsCustomIcon = dto.IsCustomIcon;
 
         db.SaveChanges();
     }
