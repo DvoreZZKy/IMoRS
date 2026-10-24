@@ -8,7 +8,7 @@
         Icon="/Assets/IMoRS.ico"
         Title="IMoRS"
         CanResize="False"
-        WindowState="FullScreen"
+        WindowState="Maximized"
         Focusable="True"
         WindowDecorations="None">
 
@@ -94,7 +94,7 @@
                             <!-- Кнопка закрыть -->
                             <Button Grid.Column="2"
                                     Classes="CloseButton"
-                                    Command="{Binding Close}">
+                                    Command="{Binding CloseCommand}">
                                 <Image Source="/Assets/cross.png"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"

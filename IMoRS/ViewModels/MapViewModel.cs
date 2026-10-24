@@ -20,6 +20,10 @@ public partial class MainWindowViewModel
         var map = new Map();
         map.Layers.Add(OpenStreetMap.CreateTileLayer());
         
+        Map = map;
+        
+        Map.Navigator.ViewportChanged += OnViewportChanged;
+        
         _markerLayer.Name = "Markers";
         _markerLayer.Features = new List<IFeature>();
         
@@ -69,5 +73,40 @@ public partial class MainWindowViewModel
             Map.Layers.Remove(layer);
             Map.Refresh();
         }
+    }
+    
+    private void OnViewportChanged(object? sender, ViewportChangedEventArgs e)
+    {
+        if (Map == null || _markerLayer == null) return;
+
+        double currentResolution = Map.Navigator.Viewport.Resolution;
+    
+        double currentZoomLevel = Math.Log2(156543.03392804097 / currentResolution);
+        
+        double baseZoomLevel = 15.0; 
+
+        double zoomDiff = currentZoomLevel - baseZoomLevel;
+
+        double scaleFactor = Math.Pow(1.2, zoomDiff); 
+    
+        scaleFactor = Math.Clamp(scaleFactor, 0.2, 5.0);
+
+        foreach (var feature in _markers)
+        {
+            if (feature["Marker"] is MarkerDto dto)
+            {
+                feature.Styles.Clear();
+                feature.Styles.Add(new ImageStyle
+                {
+                    Image = $"file:///{dto.IconPath!.Replace("\\", "/")}",
+                    SymbolScale = dto.Scale * scaleFactor, 
+                    Opacity = 1,
+                    Enabled = true
+                });
+            }
+        }
+
+        _markerLayer.DataHasChanged();
+        Map.Refresh();
     }
 }

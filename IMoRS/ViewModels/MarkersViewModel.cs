@@ -82,9 +82,6 @@ public partial class MainWindowViewModel
     {
         try
         {
-            Console.WriteLine($"--- СОЗДАНИЕ МЕТКИ ---");
-            Console.WriteLine($"Пришел iconPath: {iconPath}");
-            Console.WriteLine($"Пришел isCustom: {isCustom}");
             string physicalPath;
 
             if (isCustom)

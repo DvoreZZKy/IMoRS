@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using IMoRS.DTOs;
 using IMoRS.Models;
 using IMoRS.Services;
+using IMoRS.Views;
 using Mapsui;
 
 namespace IMoRS.ViewModels;
@@ -96,10 +97,11 @@ public partial class MainWindowViewModel
 
         App.MainWindow?.Close();
     }
-
-    [RelayCommand]
-    public void Minimize() =>
+    
+    public void Minimize()
+    {
         App.MainWindow!.WindowState = WindowState.Minimized;
+    }
 
     [RelayCommand]
     private async Task OpenPanel1()

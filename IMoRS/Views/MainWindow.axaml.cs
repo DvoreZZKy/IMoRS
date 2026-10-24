@@ -8,6 +8,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using IMoRS.DTOs;
 using IMoRS.Models;
 using IMoRS.Services;
@@ -201,6 +202,22 @@ public partial class MainWindow : Window
             mapControl.RefreshData();
         }
     }
+
+    // public static WindowState _stateBeforeMinimize;
+    //
+    // protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    // {
+    //     base.OnPropertyChanged(change);
+    //
+    //     if (change.Property == WindowStateProperty)
+    //     {
+    //         // Если окно восстановилось (стало Normal) и мы знаем, что до минимизации был FullScreen
+    //         if (WindowState == WindowState.Normal && _stateBeforeMinimize == WindowState.FullScreen)
+    //         {
+    //             WindowState = WindowState.FullScreen;
+    //         }
+    //     }
+    // }
 
     // При нажатии по заднему фону закрывает панель со знаками метки
     private void Overlay_PointerPressed(object? sender, PointerPressedEventArgs e)
