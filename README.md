@@ -1,4 +1,4 @@
-# IMoRS
+# IMoRS - ГАВНО
 
 **IMoRS** (Interactive Map Object Rendering System) — десктопное приложение для Windows
 для создания и управления пользовательскими метками на интерактивной карте.
